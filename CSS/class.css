@@ -1,0 +1,19 @@
+div{
+    background-color: lightblue;
+    height: 100px;
+    width: 200px;
+}
+
+.articletwo{
+    color: green;
+    background-color: blanchedalmond;
+    height: 40px;
+    width: 200px;
+}
+
+.article{
+    color: red;
+    background-color: rgb(221, 186, 134);
+    height: 40px;
+    width: 200px;
+}

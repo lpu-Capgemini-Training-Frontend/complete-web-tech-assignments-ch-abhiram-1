@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteBoard</title>
+    <style>
+        :root {
+            --dark: #0b1d44;
+            --blue: #2b4b9a;
+            --purple: #8c5bf8;
+            --light: #f8fafc;
+            --soft: rgba(255,255,255,0.85);
+            --muted: #cbd5e1;
+            --border: rgba(255,255,255,0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--light);
+            background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.26), transparent 24%),
+                        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.25), transparent 24%),
+                        linear-gradient(180deg, #192652 0%, #12204e 40%, #0f1940 100%);
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            font-weight: 700;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
+            border-radius: 999px;
+            color: var(--light);
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: #ffffff;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 24px 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05));
+            border-radius: 26px;
+            border: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            letter-spacing: 0.03em;
+        }
+
+        .hero p {
+            margin: 16px auto 0;
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .quotes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            justify-content: center;
+        }
+
+        .quote-card {
+            flex: 1 1 220px;
+            min-width: 220px;
+            max-width: 260px;
+            background: rgba(255,255,255,0.97);
+            color: #0f172a;
+            border-radius: 22px;
+            padding: 20px 18px 16px;
+            box-shadow: 0 18px 45px rgba(8, 23, 76, 0.12);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+
+        .quote-card blockquote {
+            margin: 0;
+            padding-left: 12px;
+            position: relative;
+            line-height: 1.7;
+            color: #122157;
+        }
+
+        .quote-card blockquote::before {
+            content: '“';
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            font-size: 2.5rem;
+            color: rgba(59, 130, 246, 0.45);
+        }
+
+        .quote-card footer {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .quote-card cite {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.16), rgba(59, 130, 246, 0.04));
+            color: #1e3a8a;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
+        }
+
+        .quote-card + .quote-card {
+            transform: translateY(0px);
+        }
+
+        footer.site-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 840px) {
+            .quotes-grid {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 620px) {
+            header,
+            footer.site-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="brand">QuoteBoard</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#quotes">Quotes</a>
+                <a href="#about">About</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <h1>Motivational Quotes</h1>
+                <p>Small words. Big impact. Stay focused and keep growing.</p>
+            </section>
+
+            <section class="quotes-grid" id="quotes">
+                <article class="quote-card">
+                    <blockquote>Keep exploring new ways to learn, always be ready with the plan B</blockquote>
+                    <footer><cite>Avisheak Upadhay</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Always try to be more productive than yesterday</blockquote>
+                    <footer><cite>Anugya</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Be attentive in the class</blockquote>
+                    <footer><cite>Yaswasini</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Try to solve the solution by yourself and then use AI</blockquote>
+                    <footer><cite>Dikshya</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Come to class on time so you could not miss anything</blockquote>
+                    <footer><cite>Avni</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>You can do it</blockquote>
+                    <footer><cite>Deepak</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Seek help from your friend directly, instead of beating around the bush through AI tools</blockquote>
+                    <footer><cite>Abijit</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Always do your homework</blockquote>
+                    <footer><cite>Ashish</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Keep Growing</blockquote>
+                    <footer><cite>Aditya Thanku</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Learn sequentially</blockquote>
+                    <footer><cite>Dhiraj</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Honesty is the best policy</blockquote>
+                    <footer><cite>Anshul</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Stay curious</blockquote>
+                    <footer><cite>Avinash</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Time and tide wait for none. Don't postpone things</blockquote>
+                    <footer><cite>Vignan</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>No pain, no gain</blockquote>
+                    <footer><cite>Sai Reddy</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Just break the flow</blockquote>
+                    <footer><cite>Avinav</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Have breakfast</blockquote>
+                    <footer><cite>Hanshik</cite></footer>
+                </article>
+                <article class="quote-card">
+                    <blockquote>Do it or your offer will be removed</blockquote>
+                    <footer><cite>Anuska</cite></footer>
+                </article>
+            </section>
+        </main>
+
+        <footer class="site-footer" id="about">
+            
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Contact</a>
+                <a href="#">Support</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* Universal selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tag selector */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Class selector */
+.container {
+    width: 60%;
+    margin: auto;
+}
+
+/* Tag selector */
+h1 {
+    margin-top: 20px;
+    color: darkgreen;
+}
+
+/* Descendant combinator */
+ul li {
+    margin-left: 20px;
+    line-height: 1.6;
+}
+
+/* Child combinator */
+ul > li {
+    font-weight: bold;
+}
+
+/* Nested list (descendant) */
+li ul li {
+    font-weight: normal;
+    color: blue;
+}
+
+/* Adjacent sibling combinator */
+h1 + ul {
+    margin-top: 10px;
+}
+
+/* General sibling combinator */
+h1 ~ ul {
+    margin-bottom: 15px;
+}
+
+/* Hover (pseudo-class) */
+li:hover {
+    color: red;
+    cursor: pointer;
+}
