@@ -24,3 +24,6 @@ console.log(array4.flat()) // flat method is used to flatten a nested array. It 
 
 console.log(array.reverse()) // reverse method is used to reverse the order of the elements in an array. It modifies the original array and returns the reversed array.
 
+//Hositing of functions and variables in JavaScript is a behavior in which function and variable declarations are moved to the top of their containing scope during the compilation phase. 
+// This means that you can call a function or access a variable before it is declared in the code, and it will not result in an error. 
+// However, only the declarations are hoisted, not the initializations. So if you try to access a variable before it is initialized, it will return undefined.
