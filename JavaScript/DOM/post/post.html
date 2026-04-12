@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #post {
+            margin-top: 20px;
+        }
+        #likeBtn, #dislikeBtn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- create a post where the user could able to like or dislike the post and also able see the count of like and dislike -->
+    <h1>Post Title</h1>
+    <p>This is a sample post content.</p>
+    <div id="post">
+        <img src="https://images.pexels.com/photos/34577784/pexels-photo-34577784.jpeg" alt="Post Image" width="300">
+    </div>
+    <button id="likeBtn" onclick="incrementLike()">Like</button>
+    <button id="dislikeBtn" onclick="incrementDislike()">Dislike</button>
+    <p id="likeCount">Likes: 0</p>
+    <p id="dislikeCount">Dislikes: 0</p>
+    <script src="./post.js">
+        
+    </script>
+
+</body>
+</html>
