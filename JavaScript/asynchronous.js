@@ -26,3 +26,18 @@ setTimeout(()=>{
 
 //setTimeout --> Executes ONLY ONCE after a delay
 //setInterval --> Executes REPEATEDLY at a fixed interval
+
+function add(a,b){
+    return new Promise((resolve,reject)=>{
+        if(typeof a !== 'number' || typeof b !== 'number'){
+            reject('not a number')
+        }
+
+        let c = a+b
+        resolve('sum '+c)
+    })
+}
+
+add(4,5).then(res=>console.log(res)).catch(err=>console.log(err))
+add('qwe','wsf').then(res=>console.log(res)).catch(err=>console.log(err))
+
