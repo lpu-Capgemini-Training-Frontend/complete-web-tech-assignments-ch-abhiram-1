@@ -1,0 +1,76 @@
+.trip-details-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.details-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.itinerary-section {
+  margin-top: 25px;
+}
+
+.itinerary-section h2 {
+  color: #555;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.itinerary-text {
+  color: #666;
+  line-height: 1.8;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #f5c6cb;
+  text-align: center;
+}
+
+.error-message button {
+  background-color: #721c24;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.error-message button:hover {
+  background-color: #5a1419;
+}

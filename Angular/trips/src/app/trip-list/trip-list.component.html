@@ -1,0 +1,36 @@
+<div class="trip-container">
+  <!-- List View -->
+  @if (selectedTripId() === null) {
+    <h1>Trip Itineraries</h1>
+    <div class="trip-list">
+      @for (trip of trips(); track trip.id) {
+        <div class="trip-card">
+          <h2>{{ trip.name }}</h2>
+          <p class="itinerary-short">
+            {{ truncateText(trip.itinerary) }}
+          </p>
+          <button 
+            class="details-btn"
+            (click)="viewDetails(trip.id)">
+            View Full Details →
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Details View -->
+  @if (selectedTripId() !== null) {
+    @let selectedTrip = getSelectedTrip();
+    @if (selectedTrip) {
+      <div class="details-view">
+        <button class="back-btn" (click)="goBack()">← Back to Trips</button>
+        <h1>{{ selectedTrip.name }}</h1>
+        <div class="itinerary-section">
+          <h2>Itinerary</h2>
+          <p class="itinerary-text">{{ selectedTrip.itinerary }}</p>
+        </div>
+      </div>
+    }
+  }
+</div>
