@@ -1,0 +1,18 @@
+<div class="trip-details-container">
+  @if (trip) {
+    <div class="details-card">
+      <button class="back-btn" (click)="goBack()">← Back to Trips</button>
+      
+      <h1>{{ trip.name }}</h1>
+      
+      <div class="itinerary-section">
+        <h2>Itinerary</h2>
+        <p class="itinerary-text">{{ trip.itinerary }}</p>
+      </div>
+    </div>
+  } @else {
+    <div class="error-message">
+      <p>Trip not found. <button (click)="goBack()">Go back</button></p>
+    </div>
+  }
+</div>

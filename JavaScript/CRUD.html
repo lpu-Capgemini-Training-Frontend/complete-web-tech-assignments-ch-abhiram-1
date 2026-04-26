@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 onclick="display()">Fruits</h1>
+    <h2 onclick="addfruit()">Add Fruit</h2>
+    <h2 onclick="displayLaptop()">Display Laptops</h2>
+    <select name="fruits" id="fruits"></select>
+
+
+    <h2 onclick="displayLaptop2()">Display Laptops 2</h2>
+    <h2 onclick="displayLaptop3()">Display Laptops 3</h2>
+    <table id="table" border="1">
+
+
+    </table>
+
+    <script>
+        var laptop = [{
+            name: "Dell",
+            price: 50000,
+            color: "Black",
+            ram: "16GB"
+        },
+        {
+            name: "HP",
+            price: 45000,
+            color: "Silver",
+            ram: "8GB"
+        },
+        {
+            name: "Lenovo",
+            price: 40000,
+            color: "Gray",
+            ram: "12GB"
+        }]
+
+        var ar = Object.entries(laptop)
+        for (let key of ar) {
+            console.log(key[0] + " " + key[1])
+        }
+
+        function displayLaptop() {
+            var table = document.getElementById("table")
+            var str = '<tr><th>Name</th><th>Price</th><th>Color</th></tr>'
+            for (let lp of laptop) {
+                str += '<tr><td>' + lp.name + '</td><td>' + lp.price + '</td><td>' + lp.color + '</td></tr>'
+            }
+            table.innerHTML = str;
+
+        }
+
+        function displayLaptop2() {
+            var table = document.getElementById("table")
+            let header = document.createElement("tr")
+            let nameHeader = document.createElement("th")
+            nameHeader.innerHTML = "Name"
+            let priceHeader = document.createElement("th")
+            priceHeader.innerHTML = "Price"
+            let colorHeader = document.createElement("th")
+            colorHeader.innerHTML = "Color"
+            header.appendChild(nameHeader)
+            header.appendChild(priceHeader)
+            header.appendChild(colorHeader)
+            table.appendChild(header)
+
+            for (let lp of laptop) {
+
+                let row = document.createElement("tr")
+                let name = document.createElement("td")
+                name.innerHTML = lp.name
+                let price = document.createElement("td")
+                price.innerHTML = lp.price
+                let color = document.createElement("td")
+                color.innerHTML = lp.color
+                row.appendChild(name)
+                row.appendChild(price)
+                row.appendChild(color)
+                table.appendChild(row)
+            }
+        }
+
+        function displayLaptop3() {
+            var table = document.getElementById("table");
+            table.innerHTML = ''; // clear previous content
+
+            // 🔹 Get keys dynamically from first object
+            let keys = Object.keys(laptop[0]);
+
+            // 🔹 Create header
+            let headerRow = document.createElement("tr");
+
+            keys.forEach(key => {
+                let th = document.createElement("th");
+                th.textContent = key.toUpperCase();
+                headerRow.appendChild(th);
+            });
+
+            let actionTh = document.createElement("th");
+            actionTh.textContent = "Actions";
+            headerRow.appendChild(actionTh);
+
+
+            table.appendChild(headerRow);
+
+            // 🔹 Create rows
+            laptop.forEach(lp => {
+                let row = document.createElement("tr");
+
+                keys.forEach(key => {
+                    let td = document.createElement("td");
+                    td.textContent = lp[key];
+                    row.appendChild(td);
+
+                });
+
+                let likebtn = document.createElement("button");
+                likebtn.textContent = "Like"
+                let dislikebtn = document.createElement("button");
+                dislikebtn.textContent = "Dislike"
+                row.appendChild(likebtn);
+                row.appendChild(dislikebtn);
+
+                table.appendChild(row);
+                likebtn.addEventListener("click", function () {
+                    row.style.backgroundColor = "lightgreen";
+                })
+                dislikebtn.addEventListener("click", function () {
+                    row.style.backgroundColor = "lightcoral";
+                })
+
+
+            });
+
+
+
+
+
+        }
+
+        let allbtn = document.createElement("button");
+        allbtn.textContent = "all Content"
+        document.body.appendChild(allbtn);
+        allbtn.addEventListener("click",function(){
+            displayLaptop3();
+        })
+
+        let likedbtn = document.createElement("button")
+        likedbtn.textContent = "Liked content"
+        document.body.appendChild(likedbtn)
+        likedbtn.addEventListener("click",function(){
+            let rows = document.querySelectorAll("#table tr")
+            rows.forEach(row=>{
+                if(rows.style.backgroundColor === "lightgreen"){
+                    
+                }
+                else{
+                    row.style.display = "none"
+                }
+            })
+        })
+
+    </script>
+
+    <script>
+        var fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+
+        function display() {
+            var fruit = document.getElementById("fruits")
+            var str = ''
+            for (var i = 0; i < fruits.length; i++) {
+                str += '<option>' + fruits[i] + '</option>'
+            }
+            fruit.innerHTML = str;
+        }
+
+        function addfruit() {
+            for (let fr of fruits) {
+                let opt = document.createElement("option");
+                opt.innerHTML = fr;
+                document.getElementById("fruits").appendChild(opt);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

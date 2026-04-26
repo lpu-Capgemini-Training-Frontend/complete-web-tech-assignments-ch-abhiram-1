@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Feedback base */
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Correct & Wrong styles */
+        .correct {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border: 1px solid #fca5a5;
+        }
+
+        /* ✅ SHOW CORRECT */
+        section:has(.correct-option:checked) .correct {
+            display: block;
+        }
+
+        /* ❌ SHOW WRONG */
+        section:has(input:checked):not(:has(.correct-option:checked)) .wrong {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-slate-700 text-white p-5 text-center">
+        <h1 class="text-xl font-bold">Quiz App</h1>
+    </header>
+
+    <main class="max-w-2xl mx-auto my-7 p-5 bg-white rounded-lg shadow-md">
+
+        <form>
+
+            <!-- QUESTION 1 -->
+            <section class="mb-6 p-4 bg-gray-100 border-l-4 border-blue-500 rounded">
+                <h2 class="font-semibold">Question 1</h2>
+                <p>What is the capital of France?</p>
+
+                <label><input type="radio" name="q1"> Berlin</label><br>
+                <label><input type="radio" name="q1"> Madrid</label><br>
+                <label><input type="radio" name="q1" class="correct-option"> Paris</label><br>
+                <label><input type="radio" name="q1"> Rome</label>
+
+                <p class="feedback correct">Correct ✅</p>
+                <p class="feedback wrong">Wrong ❌</p>
+            </section>
+
+            <!-- QUESTION 2 -->
+            <section class="mb-6 p-4 bg-gray-100 border-l-4 border-blue-500 rounded">
+                <h2>Question 2</h2>
+                <p>Largest planet?</p>
+
+                <label><input type="radio" name="q2"> Saturn</label><br>
+                <label><input type="radio" name="q2" class="correct-option"> Jupiter</label><br>
+                <label><input type="radio" name="q2"> Neptune</label><br>
+                <label><input type="radio" name="q2"> Venus</label>
+
+                <p class="feedback correct">Correct ✅</p>
+                <p class="feedback wrong">Wrong ❌</p>
+            </section>
+
+            <!-- QUESTION 3 -->
+            <section class="mb-6 p-4 bg-gray-100 border-l-4 border-blue-500 rounded">
+                <h2>Question 3</h2>
+                <p>Chemical symbol of Gold?</p>
+
+                <label><input type="radio" name="q3"> Go</label><br>
+                <label><input type="radio" name="q3"> Gd</label><br>
+                <label><input type="radio" name="q3" class="correct-option"> Au</label><br>
+                <label><input type="radio" name="q3"> Ag</label>
+
+                <p class="feedback correct">Correct ✅</p>
+                <p class="feedback wrong">Wrong ❌</p>
+            </section>
+
+            <!-- QUESTION 4 -->
+            <section class="mb-6 p-4 bg-gray-100 border-l-4 border-blue-500 rounded">
+                <h2>Question 4</h2>
+                <p>Who wrote Romeo & Juliet?</p>
+
+                <label><input type="radio" name="q4"> Jane Austen</label><br>
+                <label><input type="radio" name="q4"> Mark Twain</label><br>
+                <label><input type="radio" name="q4" class="correct-option"> Shakespeare</label><br>
+                <label><input type="radio" name="q4"> Dickens</label>
+
+                <p class="feedback correct">Correct ✅</p>
+                <p class="feedback wrong">Wrong ❌</p>
+            </section>
+
+            <!-- QUESTION 5 -->
+            <section class="mb-6 p-4 bg-gray-100 border-l-4 border-blue-500 rounded">
+                <h2>Question 5</h2>
+                <p>Smallest country?</p>
+
+                <label><input type="radio" name="q5"> Monaco</label><br>
+                <label><input type="radio" name="q5" class="correct-option"> Vatican City</label><br>
+                <label><input type="radio" name="q5"> Liechtenstein</label><br>
+                <label><input type="radio" name="q5"> San Marino</label>
+
+                <p class="feedback correct">Correct ✅</p>
+                <p class="feedback wrong">Wrong ❌</p>
+            </section>
+
+            
+
+        </form>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        © 2026 Quiz App
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<h1 onclick="display()">Fruits</h1>
+<h2 onclick="addfruit()">Add Fruit</h2>
+<h2 onclick="displayLaptop()">Display Laptops</h2>
+
+<select name="fruits" id="fruits"></select>
+
+<h2 onclick="displayLaptop2()">Display Laptops 2</h2>
+<h2 onclick="displayLaptop3()">Display Laptops 3</h2>
+
+<table id="table" border="1"></table>
+
+<script>
+    var laptop = [
+        { name: "Dell", price: 50000, color: "Black", ram: "16GB" },
+        { name: "HP", price: 45000, color: "Silver", ram: "8GB" },
+        { name: "Lenovo", price: 40000, color: "Gray", ram: "12GB" }
+    ];
+
+    function displayLaptop() {
+        var table = document.getElementById("table");
+        var str = '<tr><th>Name</th><th>Price</th><th>Color</th></tr>';
+
+        for (let lp of laptop) {
+            str += '<tr><td>' + lp.name + '</td><td>' + lp.price + '</td><td>' + lp.color + '</td></tr>';
+        }
+
+        table.innerHTML = str;
+    }
+
+    function displayLaptop2() {
+        var table = document.getElementById("table");
+        table.innerHTML = ''; // clear previous
+
+        let header = document.createElement("tr");
+
+        ["Name", "Price", "Color"].forEach(text => {
+            let th = document.createElement("th");
+            th.innerHTML = text;
+            header.appendChild(th);
+        });
+
+        table.appendChild(header);
+
+        for (let lp of laptop) {
+            let row = document.createElement("tr");
+
+            let name = document.createElement("td");
+            name.innerHTML = lp.name;
+
+            let price = document.createElement("td");
+            price.innerHTML = lp.price;
+
+            let color = document.createElement("td");
+            color.innerHTML = lp.color;
+
+            row.appendChild(name);
+            row.appendChild(price);
+            row.appendChild(color);
+
+            table.appendChild(row);
+        }
+    }
+
+    function displayLaptop3() {
+        var table = document.getElementById("table");
+        table.innerHTML = ''; // clear
+
+        let keys = Object.keys(laptop[0]);
+
+        // Header
+        let headerRow = document.createElement("tr");
+
+        keys.forEach(key => {
+            let th = document.createElement("th");
+            th.textContent = key.toUpperCase();
+            headerRow.appendChild(th);
+        });
+
+        let actionTh = document.createElement("th");
+        actionTh.textContent = "ACTIONS";
+        headerRow.appendChild(actionTh);
+
+        table.appendChild(headerRow);
+
+        // Rows
+        laptop.forEach(lp => {
+            let row = document.createElement("tr");
+
+            keys.forEach(key => {
+                let td = document.createElement("td");
+                td.textContent = lp[key];
+                row.appendChild(td);
+            });
+
+            // Buttons inside TD ✅
+            let actionTd = document.createElement("td");
+
+            let likebtn = document.createElement("button");
+            likebtn.textContent = "Like";
+
+            let dislikebtn = document.createElement("button");
+            dislikebtn.textContent = "Dislike";
+
+            actionTd.appendChild(likebtn);
+            actionTd.appendChild(dislikebtn);
+            row.appendChild(actionTd);
+
+            // Events
+            likebtn.addEventListener("click", function () {
+                row.style.backgroundColor = "lightgreen";
+            });
+
+            dislikebtn.addEventListener("click", function () {
+                row.style.backgroundColor = "lightcoral";
+            });
+
+            table.appendChild(row);
+        });
+    }
+
+    // 🔘 Buttons
+    let allbtn = document.createElement("button");
+    allbtn.textContent = "All Content";
+    document.body.appendChild(allbtn);
+
+    allbtn.addEventListener("click", function () {
+        let rows = document.querySelectorAll("#table tr");
+        rows.forEach(row => {
+            row.style.display = "table-row";
+        });
+    });
+
+    let likedbtn = document.createElement("button");
+    likedbtn.textContent = "Liked Content";
+    document.body.appendChild(likedbtn);
+
+    likedbtn.addEventListener("click", function () {
+        let rows = document.querySelectorAll("#table tr");
+
+        rows.forEach((row, index) => {
+            if (index === 0) return; 
+
+            if (row.style.backgroundColor === "lightgreen") {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+
+    let Dislikedbtn = document.createElement("button");
+    Dislikedbtn.textContent = "Disliked Content";
+    document.body.appendChild(Dislikedbtn);
+
+    Dislikedbtn.addEventListener("click", function () {
+        let rows = document.querySelectorAll("#table tr");
+
+        rows.forEach((row, index) => {
+            if (index === 0) return; 
+
+            if (row.style.backgroundColor === "lightcoral") {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+</script>
+
+<script>
+    var fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+
+    function display() {
+        var fruit = document.getElementById("fruits");
+        var str = '';
+
+        for (var i = 0; i < fruits.length; i++) {
+            str += '<option>' + fruits[i] + '</option>';
+        }
+
+        fruit.innerHTML = str;
+    }
+
+    function addfruit() {
+        for (let fr of fruits) {
+            let opt = document.createElement("option");
+            opt.innerHTML = fr;
+            document.getElementById("fruits").appendChild(opt);
+        }
+    }
+</script>
+
+
+</body>
+
+</html>
+
+</body>
+</html>
